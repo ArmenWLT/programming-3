@@ -1,5 +1,3 @@
-
-
 function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount) {
     let matrix = [];
     for (let i = 0; i < matrixSize; i++) {
@@ -65,8 +63,8 @@ function setup() {
                 let grEat = new GrassEater(x, y);
                 grassEaterArr.push(grEat);
             }
-            else if(matrix[y][x] ==3){
-                let pred  = new Predator(x,y);
+            else if (matrix[y][x] == 3) {
+                let pred = new Predator(x, y);
                 predatorArray.push(pred);
             }
         }
@@ -97,13 +95,13 @@ function draw() {
 
         grassArr[i].mul()
     }
-    
+
     for (let i in grassEaterArr) {
-    
+
         grassEaterArr[i].eat()
     }
 
-    for(let i in predatorArray){
+    for (let i in predatorArray) {
         predatorArray[i].eat()
     }
 }
