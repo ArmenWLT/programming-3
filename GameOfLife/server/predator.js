@@ -1,9 +1,10 @@
-class Predator {
+let LivingCreature = require("./livingCreature");
+
+
+module.exports = class Predator extends LivingCreature{
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        super(x,y)
         this.energy = 10;
-        this.directions = [];
 
     }
 
@@ -22,27 +23,15 @@ class Predator {
         ];
     }
 
-    chooseCell(char, char2) {
+    chooseCell(char) {
         this.getNewCoordinates();
-        let found = [];
-        for (let i = 0; i < this.directions.length; i++) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == char || matrix[y][x] == char2) {
-                    found.push(this.directions[i])
-                }
-
-            }
-        }
-
-        return found;
+        return super.chooseCell(char);
     }
 
 
     mull() {
-        let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell);
+        let emptyCells = super.chooseCell(0);
+		let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (newCell) {
             let newX = newCell[0];
@@ -56,8 +45,8 @@ class Predator {
     }
 
     eat() {
-        let foods = this.chooseCell(1, 2)
-        let food = random(foods)
+        let foods = super.chooseCell(0);
+		let food = foods[Math.floor(Math.random() * foods.length)]
 
         if (food) {
             this.energy += 5
@@ -96,8 +85,8 @@ class Predator {
     }
 
     move() {
-        let emptyCells = this.chooseCell(0)
-        let newCell = random(emptyCells)
+        let emptyCells = super.chooseCell(0);
+		let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (newCell) {
             this.energy--
