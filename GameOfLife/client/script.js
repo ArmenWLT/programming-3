@@ -1,12 +1,59 @@
 let socket = io();
 let side = 40;
 let canvasSize = 20;
+let creaturesColor = {
+    grassColor:"green",
+    grassEaterColor: "yellow",
+    predatorColor: "red"
+};
 
 let winterButton = document.getElementById('winter');
+let springButton = document.getElementById('spring');
+let summerButton = document.getElementById('summer');
+let fallButton = document.getElementById('fall');
 
-winterButton.addEventListener("click", () => {
-    alert("ooooo");
-    socket.emit("weather event", { info: "winter" });
+winterButton.addEventListener("click", (event) => {
+    let data = event.target.name;
+    if(event.target.name === "winter"){
+        creaturesColor.grassColor = "white";
+        creaturesColor.grassEaterColor= "brown";
+        creaturesColor.predatorColor = "darkGrey"
+    }
+    
+    socket.emit("weather event", { info: data });
+});
+
+springButton.addEventListener("click", (event) => {
+    let data = event.target.name;
+    if(event.target.name === "spring"){
+        creaturesColor.grassColor = "green";
+        creaturesColor.grassEaterColor= "yellow";
+        creaturesColor.predatorColor = "red"
+    }
+    
+    socket.emit("weather event", { info: data });
+});
+
+summerButton.addEventListener("click", (event) => {
+    let data = event.target.name;
+    if(event.target.name === "summer"){
+        creaturesColor.grassColor = "orange";
+        creaturesColor.grassEaterColor= "yellow";
+        creaturesColor.predatorColor = "red"
+    }
+    
+    socket.emit("weather event", { info: data });
+});
+
+fallButton.addEventListener("click", (event) => {
+    let data = event.target.name;
+    if(event.target.name === "fall"){
+        creaturesColor.grassColor = "brown";
+        creaturesColor.grassEaterColor= "yellow";
+        creaturesColor.predatorColor = "darkRed"
+    }
+    
+    socket.emit("weather event", { info: data });
 });
 
 function setup() {
@@ -22,20 +69,18 @@ for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < matrix[y].length; x++) {
         let obj = matrix[y][x];
         if (obj == 1) {
-            fill("green");
-            rect(x * side, y * side, side, side)
+            fill(creaturesColor.grassColor);
         }
         else if (obj == 2) {
-            fill("yellow");
-            rect(x * side, y * side, side, side);
+            fill(creaturesColor.grasseEaterColor);
         }
         else if (obj == 3) {
-            fill("red");
-            rect(x * side, y * side, side, side);
+            fill(creaturesColor.predatorColor);
         }else{
             fill("gray");
-            rect(x * side, y * side, side, side);
         }
+        rect(x * side, y * side, side, side)
+
     }
 }
 
