@@ -45,7 +45,7 @@ module.exports = class GrassEater extends LivingCreature {
 		let food = foods[Math.floor(Math.random() * foods.length)]
 
         if (food) {
-            this.energy += 5
+            this.energy += 2
             let newX = food[0]
             let newY = food[1]
 
@@ -62,7 +62,7 @@ module.exports = class GrassEater extends LivingCreature {
 
             this.x = newX
             this.y = newY
-            if (this.energy >= 27) {
+            if (this.energy >= 16) {
                 this.mull()
             }
 

@@ -67,15 +67,18 @@ function display(matrix) {
     
 for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < matrix[y].length; x++) {
+        let g = creaturesColor.grassColor;
+        let gE = creaturesColor.grassEaterColor;
+        let p = creaturesColor.predatorColor;
         let obj = matrix[y][x];
         if (obj == 1) {
-            fill(creaturesColor.grassColor);
+            fill(g);
         }
         else if (obj == 2) {
-            fill(creaturesColor.grasseEaterColor);
+            fill(gE);
         }
         else if (obj == 3) {
-            fill(creaturesColor.predatorColor);
+            fill(p);
         }else{
             fill("gray");
         }

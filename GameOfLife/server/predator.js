@@ -4,7 +4,7 @@ let LivingCreature = require("./livingCreature");
 module.exports = class Predator extends LivingCreature{
     constructor(x, y) {
         super(x,y)
-        this.energy = 10;
+        this.energy = 5;
 
     }
 
@@ -23,7 +23,7 @@ module.exports = class Predator extends LivingCreature{
         ];
     }
 
-    chooseCell(char, cahr2) {
+    chooseCell(char, char2) {
         this.getNewCoordinates();
         return super.chooseCell(char, char2);
     }
@@ -49,7 +49,7 @@ module.exports = class Predator extends LivingCreature{
 		let food = foods[Math.floor(Math.random() * foods.length)]
 
         if (food) {
-            this.energy += 5
+            this.energy += 2
             let newX = food[0]
             let newY = food[1]
 
@@ -89,7 +89,7 @@ module.exports = class Predator extends LivingCreature{
 		let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (newCell) {
-            this.energy--
+            this.energy-=2
             let newX = newCell[0]
             let newY = newCell[1]
 
@@ -112,6 +112,7 @@ module.exports = class Predator extends LivingCreature{
 
         for (let i in predatorArray) {
             if (this.x == predatorArray[i].x && this.y == predatorArray[i].y) {
+                console.log("dddddddddddddddddd");
                 predatorArray.splice(i, 1);
                 break;
             }
