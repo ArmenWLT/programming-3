@@ -41,7 +41,7 @@ module.exports = class GrassEater extends LivingCreature {
 
 
     eat() {
-        let foods = super.chooseCell(0);
+        let foods = super.chooseCell(1);
 		let food = foods[Math.floor(Math.random() * foods.length)]
 
         if (food) {

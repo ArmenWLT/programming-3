@@ -2,14 +2,20 @@ let socket = io();
 let side = 40;
 let canvasSize = 20;
 
+let winterButton = document.getElementById('winter');
+
+winterButton.addEventListener("click", () => {
+    alert("ooooo");
+    socket.emit("weather event", { info: "winter" });
+});
+
 function setup() {
-    frameRate(10);
+    frameRate(15);
     createCanvas(20 * side, 20 * side);
 
 }
 
 function display(matrix) {
-    console.log("mmmmmm=====>>>>",matrix);
 
     
 for (let y = 0; y < matrix.length; y++) {
@@ -34,6 +40,8 @@ for (let y = 0; y < matrix.length; y++) {
 }
 
 }
+
+
 
 setInterval(
     function () {

@@ -23,9 +23,9 @@ module.exports = class Predator extends LivingCreature{
         ];
     }
 
-    chooseCell(char) {
+    chooseCell(char, cahr2) {
         this.getNewCoordinates();
-        return super.chooseCell(char);
+        return super.chooseCell(char, char2);
     }
 
 
@@ -45,7 +45,7 @@ module.exports = class Predator extends LivingCreature{
     }
 
     eat() {
-        let foods = super.chooseCell(0);
+        let foods = super.chooseCell(1,2);
 		let food = foods[Math.floor(Math.random() * foods.length)]
 
         if (food) {
